@@ -1,0 +1,292 @@
+<div>
+    <button type="button" class="btn-primary addBtn" tooltip="Click for open form"
+        (click)="openModal(template)">ADD</button>
+   
+    <ng-template #template>
+        <div class="modal-header">
+            <h4 class="modal-title pull-left">Write your datas</h4>
+            <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+                <span aria-hidden="true" class="visually-hidden">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="form" (ngSubmit)="save()">
+                <label for="f-name">First Name</label>
+                <div><input [formControlName]="'first_name'" type="text" id="f-name"></div>
+
+                <div class="error-message"
+                    *ngIf="form.get('first_name').hasError('required') && (form.get('first_name').touched || form.get('first_name').dirty)">
+                    First name must be required</div>
+                <div class="error-message"
+                    *ngIf="form.get('first_name').hasError('minlength') && (form.get('first_name').touched || form.get('first_name').dirty)">
+                    First name must be minimum 2 symbols</div>
+                <div class="error-message"
+                    *ngIf="form.get('first_name').hasError('maxlength') && (form.get('first_name').touched || form.get('first_name').dirty)">
+                    First name must be maximum 10 symbols</div>
+
+                <label for="l-name">Last Name</label>
+                <div><input type="text" formControlName="last_name" id="l-name"></div>
+                <div class="error-message"
+                    *ngIf="form.get('last_name').hasError('required') && (form.get('last_name').touched || form.get('last_name').dirty)">
+                    Last name must be required</div>
+                <div class="error-message"
+                    *ngIf="form.get('last_name').hasError('minlength') && (form.get('last_name').touched || form.get('last_name').dirty)">
+                    Last name must be minimum 2 symbols</div>
+                <div class="error-message"
+                    *ngIf="form.get('last_name').hasError('maxlength') && (form.get('last_name').touched || form.get('last_name').dirty)">
+                    Last name must be maximum 10 symbols</div>
+                <label for="age">Age</label>
+                <div><input type="number" formControlName="age" id="age"></div>
+                <div class="error-message"
+                    *ngIf="form.get('age').hasError('required') && (form.get('age').touched || form.get('age').dirty)">
+                    Age must be required</div>
+                <div class="error-message"
+                    *ngIf="form.get('age').hasError('min') && (form.get('age').touched || form.get('age').dirty)">Your
+                    age must be minimum 10 years</div>
+                <div class="error-message"
+                    *ngIf="form.get('age').hasError('max') && (form.get('age').touched || form.get('age').dirty)">Your
+                    age must be maximum 90 years</div>
+                <label for="email">Email</label>
+                <div><input type="email" formControlName="email" id="email"></div>
+                <div class="error-message"
+                    *ngIf="form.get('email').hasError('required') && (form.get('email').touched || form.get('email').dirty)">
+                    Email must be required</div>
+                <div class="error-message"
+                    *ngIf="form.get('email').hasError('pattern') && (form.get('email').touched || form.get('email').dirty)">
+                    Incorrect email format</div>
+                <label for="password">Country</label>
+                <div><input type="text" formControlName="country" id="country"></div>
+                <div class="error-message"
+                    *ngIf="form.get('country').hasError('required') && (form.get('last_name').touched || form.get('last_name').dirty)">
+                    The country name must be required</div>
+                <div class="error-message"
+                    *ngIf="form.get('country').hasError('minlength') && (form.get('last_name').touched || form.get('last_name').dirty)">
+                    The country name must be minimum 2 symbols</div>
+                <div class="error-message"
+                    *ngIf="form.get('country').hasError('maxlength') && (form.get('last_name').touched || form.get('last_name').dirty)">
+                    The country name must be maximum 10 symbols</div>
+                <label for="confirm_password">City</label>
+                <div><input type="text" formControlName="city" id="city"></div>
+                <div class="error-message"
+                    *ngIf="form.get('city').hasError('required') && (form.get('last_name').touched || form.get('last_name').dirty)">
+                    The city name must be required</div>
+                <div class="error-message"
+                    *ngIf="form.get('city').hasError('minlength') && (form.get('last_name').touched || form.get('last_name').dirty)">
+                    The city name must be minimum 2 symbols</div>
+                <div class="error-message"
+                    *ngIf="form.get('city').hasError('maxlength') && (form.get('last_name').touched || form.get('last_name').dirty)">
+                    The city name must be maximum 10 symbols</div>
+
+                <label for="address">Address</label>
+                <div><input type="text" formControlName="address" id="address"></div>
+                <div class="error-message"
+                    *ngIf="form.get('address').hasError('required') && (form.get('address').touched || form.get('address').dirty)">
+                    Address must be required</div>
+                <div class="error-message"
+                    *ngIf="form.get('address').hasError('pattern') && (form.get('address').touched || form.get('address').dirty)">
+                    Incorrect address format</div>
+                <label for="image">Gender</label>
+                <div>
+                    <div> Male
+                        <input type="radio" formControlName="gender" id="genderMale" name="gender" value="male">
+                    </div>
+                    <div> Female
+                        <input type="radio" formControlName="gender" id="genderFemale" name="gender" value="female">
+
+                    </div>
+                </div>
+                <button class="btn btn-primary" (click)="modalRef?.hide()" (click)="create()" (click)="save" (click)="getData()">Save</button>
+            </form>
+        </div>
+    </ng-template>
+    <table>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Age</th>
+                <th>Email</th>
+                <th>Country</th>
+                <th>City</th>
+                <th>Address</th>
+                <th>Gender</th>
+                <th>Action</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let user of data">
+                <td>{{user.first_name}}</td>
+                <td>{{user.last_name}}</td>
+                <td>{{user.age}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.country}}</td>
+                <td>{{user.city}}</td>
+                <td>{{user.address}}</td>
+                <td>{{user.gender}}</td>
+
+                <td><button class="btn-primary" type="button" (click)="openModal(template)"
+                        (click)="save()" (click)="create()" tooltip="Click for open form">Edit</button>
+                    <ng-template #template>
+                        <div class="modal-header">
+                            <h4 class="modal-title pull-left">Write your datas</h4>
+                            <button type="button" class="btn-close close pull-right" aria-label="Close"
+                                (click)="modalRef?.hide()">
+                                <span aria-hidden="true" class="visually-hidden">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form [formGroup]="form" (ngSubmit)="save()" >
+                                <label for="f-name">First Name</label>
+                                <div><input [formControlName]="'first_name'" type="text" id="f-name"
+                                        [(ngModel)]="user.first_name"></div>
+
+                                <div class="error-message"
+                                    *ngIf="form.get('first_name').hasError('required') && (form.get('first_name').touched || form.get('first_name').dirty)">
+                                    First name must be required</div>
+                                <div class="error-message"
+                                    *ngIf="form.get('first_name').hasError('minlength') && (form.get('first_name').touched || form.get('first_name').dirty)">
+                                    First name must be minimum 2 symbols</div>
+                                <div class="error-message"
+                                    *ngIf="form.get('first_name').hasError('maxlength') && (form.get('first_name').touched || form.get('first_name').dirty)">
+                                    First name must be maximum 10 symbols</div>
+
+                                <label for="l-name">Last Name</label>
+                                <div><input type="text" formControlName="last_name" id="l-name"
+                                        [(ngModel)]="user.last_name"></div>
+                                <div class="error-message"
+                                    *ngIf="form.get('last_name').hasError('required') && (form.get('last_name').touched || form.get('last_name').dirty)">
+                                    Last name must be required</div>
+                                <div class="error-message"
+                                    *ngIf="form.get('last_name').hasError('minlength') && (form.get('last_name').touched || form.get('last_name').dirty)">
+                                    Last name must be minimum 2 symbols</div>
+                                <div class="error-message"
+                                    *ngIf="form.get('last_name').hasError('maxlength') && (form.get('last_name').touched || form.get('last_name').dirty)">
+                                    Last name must be maximum 10 symbols</div>
+                                <label for="age">Age</label>
+                                <div><input type="number" formControlName="age" id="age" [(ngModel)]="user.age"></div>
+                                <div class="error-message"
+                                    *ngIf="form.get('age').hasError('required') && (form.get('age').touched || form.get('age').dirty)">
+                                    Age must be required</div>
+                                <div class="error-message"
+                                    *ngIf="form.get('age').hasError('min') && (form.get('age').touched || form.get('age').dirty)">
+                                    Your age must be minimum 10 years</div>
+                                <div class="error-message"
+                                    *ngIf="form.get('age').hasError('max') && (form.get('age').touched || form.get('age').dirty)">
+                                    Your age must be maximum 90 years</div>
+                                <label for="email">Email</label>
+                                <div><input type="email" formControlName="email" id="email" [(ngModel)]="user.email">
+                                </div>
+                                <div class="error-message"
+                                    *ngIf="form.get('email').hasError('required') && (form.get('email').touched || form.get('email').dirty)">
+                                    Email must be required</div>
+                                <div class="error-message"
+                                    *ngIf="form.get('email').hasError('pattern') && (form.get('email').touched || form.get('email').dirty)">
+                                    Incorrect email format</div>
+                                <label for="password">Country</label>
+                                <div><input type="text" formControlName="country" id="country"
+                                        [(ngModel)]="user.country"></div>
+                                <div class="error-message"
+                                    *ngIf="form.get('country').hasError('required') && (form.get('last_name').touched || form.get('last_name').dirty)">
+                                    The country name must be required</div>
+                                <div class="error-message"
+                                    *ngIf="form.get('country').hasError('minlength') && (form.get('last_name').touched || form.get('last_name').dirty)">
+                                    The country name must be minimum 2 symbols</div>
+                                <div class="error-message"
+                                    *ngIf="form.get('country').hasError('maxlength') && (form.get('last_name').touched || form.get('last_name').dirty)">
+                                    The country name must be maximum 10 symbols</div>
+                                <label for="confirm_password">City</label>
+                                <div><input type="text" formControlName="city" id="city" [(ngModel)]="user.city"></div>
+                                <div class="error-message"
+                                    *ngIf="form.get('city').hasError('required') && (form.get('last_name').touched || form.get('last_name').dirty)">
+                                    The city name must be required</div>
+                                <div class="error-message"
+                                    *ngIf="form.get('city').hasError('minlength') && (form.get('last_name').touched || form.get('last_name').dirty)">
+                                    The city name must be minimum 2 symbols</div>
+                                <div class="error-message"
+                                    *ngIf="form.get('city').hasError('maxlength') && (form.get('last_name').touched || form.get('last_name').dirty)">
+                                    The city name must be maximum 10 symbols</div>
+
+                                <label for="address">Address</label>
+                                <div><input type="text" formControlName="address" id="address"
+                                        [(ngModel)]="user.address"></div>
+                                <div class="error-message"
+                                    *ngIf="form.get('address').hasError('required') && (form.get('address').touched || form.get('address').dirty)">
+                                    Address must be required</div>
+                                <div class="error-message"
+                                    *ngIf="form.get('address').hasError('pattern') && (form.get('address').touched || form.get('address').dirty)">
+                                    Incorrect address format</div>
+                                <label for="image">Gender</label>
+                                <div>
+                                    <div> Male
+                                        <input type="radio" formControlName="gender" id="genderMale" name="gender"
+                                            value="male" [(ngModel)]="user.gender">
+                                    </div>
+                                    <div> Female
+                                        <input type="radio" formControlName="gender" id="genderFemale" name="gender"
+                                            value="female">
+
+                                    </div>
+                                </div>
+                                <button class="btn-primary" (click)="modalRef?.hide()" (click)="create()" (click)="save()"
+                                (click)="getData()">Save</button>
+                            </form>
+                        </div>
+                    </ng-template>
+                    <button class="btn-primary" type="button" (click)='deleteData(user.id)' (click)="getData()">Del</button>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!-- <form [formGroup]="form" (ngSubmit)="save()">
+    <label for="f-name">First Name</label>
+    <div><input [formControlName]="'first_name'"  type="text" id="f-name"></div>
+    
+    <div class="error-message" *ngIf="form.get('first_name').hasError('required') && (form.get('first_name').touched || form.get('first_name').dirty)">First name must be required</div>
+    <div class="error-message" *ngIf="form.get('first_name').hasError('minlength') && (form.get('first_name').touched || form.get('first_name').dirty)">First name must be minimum 2 symbols</div>
+    <div class="error-message" *ngIf="form.get('first_name').hasError('maxlength') && (form.get('first_name').touched || form.get('first_name').dirty)">First name must be maximum 10 symbols</div>
+    
+    <label for="l-name">Last Name</label>
+    <div><input type="text" formControlName="last_name" id="l-name"></div>
+    <div class="error-message" *ngIf="form.get('last_name').hasError('required') && (form.get('last_name').touched || form.get('last_name').dirty)">Last name must be required</div>
+    <div class="error-message" *ngIf="form.get('last_name').hasError('minlength') && (form.get('last_name').touched || form.get('last_name').dirty)">Last name must be minimum 2 symbols</div>
+    <div class="error-message" *ngIf="form.get('last_name').hasError('maxlength') && (form.get('last_name').touched || form.get('last_name').dirty)">Last name must be maximum 10 symbols</div>
+    <label for="age">Age</label>
+    <div><input type="number" formControlName="age" id="age"></div>
+    <div class="error-message" *ngIf="form.get('age').hasError('required') && (form.get('age').touched || form.get('age').dirty)">Age must be required</div>
+    <div class="error-message" *ngIf="form.get('age').hasError('min') && (form.get('age').touched || form.get('age').dirty)">Your age must be minimum 10 years</div>
+    <div class="error-message" *ngIf="form.get('age').hasError('max') && (form.get('age').touched || form.get('age').dirty)">Your age must be maximum 90 years</div>
+    <label for="email">Email</label>
+    <div><input type="email" formControlName="email" id="email"></div>
+    <div class="error-message" *ngIf="form.get('email').hasError('required') && (form.get('email').touched || form.get('email').dirty)">Email must be required</div>
+    <div class="error-message" *ngIf="form.get('email').hasError('pattern') && (form.get('email').touched || form.get('email').dirty)">Incorrect email format</div>
+    <label for="password">Country</label>
+    <div><input type="text" formControlName="country" id="country"></div>
+    <div class="error-message" *ngIf="form.get('country').hasError('required') && (form.get('last_name').touched || form.get('last_name').dirty)">The country name must be required</div>
+    <div class="error-message" *ngIf="form.get('country').hasError('minlength') && (form.get('last_name').touched || form.get('last_name').dirty)">The country name must be minimum 2 symbols</div>
+    <div class="error-message" *ngIf="form.get('country').hasError('maxlength') && (form.get('last_name').touched || form.get('last_name').dirty)">The country name must be maximum 10 symbols</div>
+    <label for="confirm_password">City</label>
+    <div><input type="text" formControlName="city" id="city"></div>
+    <div class="error-message" *ngIf="form.get('city').hasError('required') && (form.get('last_name').touched || form.get('last_name').dirty)">The city name must be required</div>
+    <div class="error-message" *ngIf="form.get('city').hasError('minlength') && (form.get('last_name').touched || form.get('last_name').dirty)">The city name must be minimum 2 symbols</div>
+    <div class="error-message" *ngIf="form.get('city').hasError('maxlength') && (form.get('last_name').touched || form.get('last_name').dirty)">The city name must be maximum 10 symbols</div>
+    
+    <label for="address">Address</label>
+    <div><input type="text" formControlName="address" id="address"></div>
+    <div class="error-message" *ngIf="form.get('address').hasError('required') && (form.get('address').touched || form.get('address').dirty)">Address must be required</div>
+    <div class="error-message" *ngIf="form.get('address').hasError('pattern') && (form.get('address').touched || form.get('address').dirty)">Incorrect address format</div>
+    <label for="image">Gender</label>
+    <div>
+        <div> Male
+            <input type="radio" formControlName="gender" id="genderMale" name="gender" value="male">
+        </div>
+        <div> Female
+            <input type="radio" formControlName="gender" id="genderFemale" name="gender" value="female">
+
+        </div>
+    </div>
+    <button [disabled]="form.invalid" (click)="save()">Save</button>
+</form> -->

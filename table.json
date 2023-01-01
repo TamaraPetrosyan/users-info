@@ -1,0 +1,114 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "first_name": "Jack",
+      "last_name": "Hudson",
+      "age": 25,
+      "email": "jack111@gmail.com",
+      "country": "USA",
+      "city": "Washington",
+      "address": "Miami str., 12",
+      "gender": "male"
+    },
+    {
+      "first_name": "Mike",
+      "last_name": "Tompson",
+      "age": 45,
+      "email": "asdfaf@mail.ru",
+      "country": "Armenia",
+      "city": "Gyumri",
+      "address": "Ryzhkov 12",
+      "gender": "male",
+      "id": 2
+    },
+    {
+      "first_name": "Annie",
+      "last_name": "Tompson",
+      "age": 27,
+      "email": "annie@yahoo.com",
+      "country": "USA",
+      "city": "New-York",
+      "address": "Cennedy 3",
+      "gender": "female",
+      "id": 21
+    },
+    {
+      "first_name": "Mike",
+      "last_name": "Tompson",
+      "age": 55,
+      "email": "asdfaf@mail.ru",
+      "country": "Armenia",
+      "city": "Gyumri",
+      "address": "Kennedy2555",
+      "gender": "male",
+      "id": 22
+    },
+    {
+      "first_name": "Mike",
+      "last_name": "Tompson",
+      "age": 33,
+      "email": "asdfaf@mail.ru",
+      "country": "Armenia",
+      "city": "Gyumri",
+      "address": "sgfdh",
+      "gender": "male",
+      "id": 24
+    },
+    {
+      "first_name": "Mike",
+      "last_name": "Tompson",
+      "age": 55,
+      "email": "asdfaf@mail.ru",
+      "country": "Armenia",
+      "city": "Gyumri",
+      "address": "Cennedy 3",
+      "gender": "male",
+      "id": 26
+    },
+    {
+      "first_name": "Annie",
+      "last_name": "Tompson",
+      "age": 66,
+      "email": "asdfaf@mail.ru",
+      "country": "Armenia",
+      "city": "Gyumri",
+      "address": "Cennedy",
+      "gender": "female",
+      "id": 28
+    },
+    {
+      "first_name": "Mike",
+      "last_name": "Tompson",
+      "age": 55,
+      "email": "asdfaf@mail.ru",
+      "country": "Armenia",
+      "city": "Gyumri",
+      "address": "Ani dist,13str., b. 9, h. 3",
+      "gender": "male",
+      "id": 30
+    },
+    {
+      "first_name": "",
+      "last_name": "",
+      "age": "",
+      "email": "",
+      "country": "",
+      "city": "",
+      "address": "",
+      "gender": "",
+      "id": 31
+    },
+    {
+      "first_name": "",
+      "last_name": "",
+      "age": "",
+      "email": "",
+      "country": "",
+      "city": "",
+      "address": "",
+      "gender": "",
+      "id": 32
+    }
+  ]
+}
